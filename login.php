@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$conn = new mysqli('aps.pregps.cl:3306', 'root', 'FTGK2ZMzDjGqYT97eBRr', 'ecommerce');
+$conn = new mysqli('aps.pregps.cl', 'root', 'FTGK2ZMzDjGqYT97eBRr', 'ecommerce');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
