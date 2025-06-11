@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$conn = new mysqli('localhost', 'root', '', 'ecommerce');
+$conn = new mysqli('aps.pregps.cl:3306', 'root', 'FTGK2ZMzDjGqYT97eBRr', 'ecommerce');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->fetch();
         if (password_verify($password, $hash)) {
             $_SESSION['user_id'] = $id;
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $username;  
             header("Location: products.php");
             exit();
         }

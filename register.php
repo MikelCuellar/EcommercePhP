@@ -4,7 +4,7 @@
 session_start();
 
 // Conecta con la base de datos
-$conn = new mysqli('aps.pregps.cl', 'root', 'FTGK2ZMzDjGqYT97eBRr', 'ecommerce');
+$conn = new mysqli('aps.pregps.cl:3306', 'root', 'FTGK2ZMzDjGqYT97eBRr', 'ecommerce');
 
 // Si el formulario fue enviado por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
