@@ -110,9 +110,9 @@ function findProductById($products, $id) {
     <p class="cart-total-amount">$<?= number_format($total, 0, ',', '.') ?></p>
 </div>
 
-<!-- Botón para generar boleta -->
-<form action="generate_invoice.php" method="post" style="text-align: center;">
-    <button type="submit">Generar Boleta</button>
+<!-- Botón para ir a Checkout -->
+<form action="checkout.php" method="get" style="text-align: center;">
+    <button type="submit" class="custom-button">Ir a pagar</button>
 </form>
 
 </body>

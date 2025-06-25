@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $hash)) {
             $_SESSION['user_id'] = $id;
             $_SESSION['username'] = $username;  
-            header("Location: products.php");
+            header("Location: products_view.php");
             exit();
         }
     }
@@ -24,7 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html><html><head><title>Login</title>
 <link rel='stylesheet' href='style_auth.css'>
-</head><body>
+</head>
+<body>
+
+<header class="simple-navbar">
+    <a href="products_view.php" class="logo-centered">DEPORTIVA</a>
+</header>
+
 <form method="post">
   <h2>Iniciar Sesión</h2>
   <input type="text" name="username" placeholder="Usuario" required>
@@ -32,4 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <button type="submit">Ingresar</button>
   <a href="register.php">Crear una cuenta</a>
 </form>
-</body></html>
+
+</body>
+</html>
