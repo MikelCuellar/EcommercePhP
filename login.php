@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $conn = new mysqli('aps.pregps.cl', 'root', 'FTGK2ZMzDjGqYT97eBRr', 'ecommerce');
@@ -22,22 +21,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script>alert('Credenciales inválidas');</script>";
 }
 ?>
-<!DOCTYPE html><html><head><title>Login</title>
-<link rel='stylesheet' href='style_auth.css'>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="simple-navbar">
-    <a href="products_view.php" class="logo-centered">DEPORTIVA</a>
-</header>
+<div class="login-wrapper">
+  <div class="login-image">
+    <img src="img/portada.jpg" alt="Imagen login">
+  </div>
 
-<form method="post">
-  <h2>Iniciar Sesión</h2>
-  <input type="text" name="username" placeholder="Usuario" required>
-  <input type="password" name="password" placeholder="Contraseña" required>
-  <button type="submit">Ingresar</button>
-  <a href="register.php">Crear una cuenta</a>
-</form>
+  <div class="login-form-container">
+    <div class="simple-navbar">
+      <a href="products_view.php" class="logo-centered">DEPORTIVA</a>
+    </div>
+
+    <form method="post">
+      <h2>Iniciar Sesión</h2>
+      <input type="text" name="username" placeholder="Usuario" required>
+      <input type="password" name="password" placeholder="Contraseña" required>
+      <button type="submit">Ingresar</button>
+      <a href="register.php">Crear una cuenta</a>
+    </form>
+  </div>
+</div>
 
 </body>
 </html>
+

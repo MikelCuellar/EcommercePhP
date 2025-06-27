@@ -74,11 +74,19 @@ function findProductById($products, $id) {
         $subtotal = $product['price'] * $quantity;
         $total += $subtotal;
     ?>
-        <div class="product-card">
+        <!--<div class="product-card">
             <div class="product-info">
                 <h3><?= $product['name'] ?></h3>
                 <p>Cantidad: <?= $quantity ?></p>
                 <p class="price">Subtotal: $<?= number_format($subtotal, 0, ',', '.') ?></p>
+            </div>
+        </div>-->
+        <div class="product-card product-item">
+            <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+            <div class="item-details">
+                <h3><?= $product['name'] ?></h3>
+                <p>Cantidad: <?= $quantity ?></p>
+                <p class="price"><strong>Subtotal: $<?= number_format($subtotal, 0, ',', '.') ?></strong></p>
             </div>
         </div>
     <?php endforeach; ?>
@@ -105,15 +113,24 @@ function findProductById($products, $id) {
 </script>
 
 <!-- Total en recuadro -->
-<div class="cart-total-box">
+<!--<div class="cart-total-box">
     <h3>Total a pagar:</h3>
     <p class="cart-total-amount">$<?= number_format($total, 0, ',', '.') ?></p>
-</div>
+</div>-->
 
 <!-- Botón para ir a Checkout -->
-<form action="checkout.php" method="get" style="text-align: center;">
+<!--<form action="checkout.php" method="get" style="text-align: center;">
     <button type="submit" class="custom-button">Ir a pagar</button>
-</form>
+</form>-->
+<div class="cart-total-container">
+    <div class="cart-total-box">
+        <h3>Total a pagar:</h3>
+        <p class="cart-total-amount">$<?= number_format($total, 0, ',', '.') ?></p>
+    </div>
+    <form action="checkout.php" method="get">
+        <button type="submit" class="custom-button">Ir a pagar</button>
+    </form>
+</div>
 
 </body>
 </html>

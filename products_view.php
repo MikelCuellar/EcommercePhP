@@ -57,11 +57,11 @@ $total_items = array_sum($_SESSION['cart'] ?? []);
             <div class="product-info">
                 <h3><?= $product['name'] ?></h3>
                 <p class="price">$<?= number_format($product['price'], 0, ',', '.') ?></p>
-                <form>
-                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                    <button type="button" class="add-to-cart-btn" data-id="<?= $product['id'] ?>">Añadir al carrito</button>
-                </form>
             </div>
+            <form>
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <button type="button" class="add-to-cart-btn" data-id="<?= $product['id'] ?>">Añadir al carrito</button>
+            </form>
         </div>
     <?php endforeach; ?>
 </div>
