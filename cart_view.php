@@ -24,7 +24,6 @@ function findProductById($products, $id) {
 <header class="navbar">
     <a href="products_view.php" class="logo">DEPORTIVA</a>
 
-
     <nav class="menu">
         <ul>
             <li class="dropdown">
@@ -57,42 +56,56 @@ function findProductById($products, $id) {
     </div>
 </header>
 
-<!-- Título del carrito -->
 <h2 class="cart-title">Carrito de Compras</h2>
 
-<!-- Lista de productos -->
-<div class="product-grid">
-    <?php 
-    $total = 0;
-    foreach ($_SESSION['cart'] as $id => $quantity):
-        $product = findProductById($products, $id);
-        if (!$product) {
-            echo "<div class='product-card'><p>Producto ID $id no encontrado.</p></div>";
-            continue;
-        }
+<div class="cart-items-container">
+<?php 
+$total = 0;
+foreach ($_SESSION['cart'] as $id => $quantity):
+    $product = findProductById($products, $id);
+    if (!$product) {
+        echo "<div class='product-card'><p>Producto ID $id no encontrado.</p></div>";
+        continue;
+    }
 
-        $subtotal = $product['price'] * $quantity;
-        $total += $subtotal;
-    ?>
-        <!--<div class="product-card">
-            <div class="product-info">
-                <h3><?= $product['name'] ?></h3>
-                <p>Cantidad: <?= $quantity ?></p>
-                <p class="price">Subtotal: $<?= number_format($subtotal, 0, ',', '.') ?></p>
-            </div>
-        </div>-->
-        <div class="product-card product-item">
-            <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
-            <div class="item-details">
-                <h3><?= $product['name'] ?></h3>
-                <p>Cantidad: <?= $quantity ?></p>
-                <p class="price"><strong>Subtotal: $<?= number_format($subtotal, 0, ',', '.') ?></strong></p>
-            </div>
+    $subtotal = $product['price'] * $quantity;
+    $total += $subtotal;
+?>
+<div class="product-card product-item">
+    <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+    <div class="item-details">
+        <h3><?= $product['name'] ?></h3>
+        <p class="price"><strong>Subtotal: $<?= number_format($subtotal, 0, ',', '.') ?></strong></p>
+
+        <div class="cart-quantity-controls">
+            <form action="cart_update.php" method="post" style="display:inline;">
+                <input type="hidden" name="action" value="decrease">
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <button type="submit">-</button>
+            </form>
+
+            <span class="quantity-display"><?= $quantity ?></span>
+
+            <form action="cart_update.php" method="post" style="display:inline;">
+                <input type="hidden" name="action" value="increase">
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <button type="submit">+</button>
+            </form>
+
+            <form action="cart_update.php" method="post" style="display:inline;">
+                <input type="hidden" name="action" value="remove">
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <button type="submit" class="remove-button">X</button>
+            </form>
         </div>
-    <?php endforeach; ?>
+    </div>
 </div>
 
-<!-- Script para abrir/cerrar submenú de Categorías -->
+
+
+<?php endforeach; ?>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.getElementById('toggle-categorias');
@@ -112,16 +125,6 @@ function findProductById($products, $id) {
     });
 </script>
 
-<!-- Total en recuadro -->
-<!--<div class="cart-total-box">
-    <h3>Total a pagar:</h3>
-    <p class="cart-total-amount">$<?= number_format($total, 0, ',', '.') ?></p>
-</div>-->
-
-<!-- Botón para ir a Checkout -->
-<!--<form action="checkout.php" method="get" style="text-align: center;">
-    <button type="submit" class="custom-button">Ir a pagar</button>
-</form>-->
 <div class="cart-total-container">
     <div class="cart-total-box">
         <h3>Total a pagar:</h3>
