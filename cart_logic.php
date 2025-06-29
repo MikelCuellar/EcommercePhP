@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'products_logic.php'; // este trae el array real de productos
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -12,12 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     } else {
         $_SESSION['cart'][$productId]++;
     }
-}
+    echo json_encode(['status' => 'ok']);
+    exit;
 
-$products = [
-    1 => ["name" => "Pelota de Fútbol", "price" => 15000],
-    2 => ["name" => "Balón de Básquetbol", "price" => 18000],
-    3 => ["name" => "Raqueta de Tenis", "price" => 30000],
-    4 => ["name" => "Guantes de Boxeo", "price" => 25000]
-];
+        // Calcular total actualizado
+        $total_items = array_sum($_SESSION['cart']);
+
+        echo json_encode(['status' => 'ok', 'total_items' => $total_items]);
+        exit;
+    }
 ?>

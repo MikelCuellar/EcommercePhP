@@ -44,6 +44,24 @@ a {
   text-decoration: none;
 }
 h2 {
+  margin-top: 60px;
   text-align: center;
   color: #333;
 }
+
+.simple-navbar {
+  background-color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.logo-centered {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
